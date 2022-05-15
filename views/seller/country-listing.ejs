@@ -1,0 +1,233 @@
+
+<%-
+include('../partials/seller/header')
+%>
+<%- include('../partials/seller/navbar') %>
+
+
+
+
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column">
+
+   <!-- Main Content -->
+   <div id="content">
+
+       <!-- Topbar -->
+        <%- include("../partials/seller/head") %>
+
+
+        <div class="container-fluid " style="background-color: cadetblue;">
+   <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-4 m-2">
+         <div class="input-group">
+            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for zip code" aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+               <button class="btn btn-primary" type="button">
+               <i class="fas fa-search fa-sm"></i>
+               </button>
+            </div>
+         </div>
+      </div>
+
+
+      <div class="col-md-3 m-2">
+         <div class="input-group">
+            <!-- <input type="text" class="form-control bg-light border-0 small" placeholder="Search for Rating" aria-label="Search" aria-describedby="basic-addon2"> -->
+            <select  class="form-control bg-light border-0 small">
+            <option selected>All</option>
+    <option>*</option>
+    <option>**</option>
+    <option>***</option>
+    <option>****</option>
+    <option>*****</option>
+  </select>
+            <div class="input-group-append">
+               <button class="btn btn-primary" type="button">
+               <i class="fas fa-search fa-sm"></i>
+               </button>
+            </div>
+         </div>
+      </div>
+      <div class="col-md-3 m-2">
+         <div class="input-group">
+            <input type="text" class="form-control bg-light border-0 small" placeholder="Search by Commission Rate" aria-label="Search" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+               <button class="btn btn-primary" type="button">
+               <i class="fas fa-search fa-sm"></i>
+               </button>
+            </div>
+         </div>
+      </div>
+</div>
+
+   <style>
+      .card:hover{
+height: 200px;
+      }
+   </style>
+
+<div class="container-fluid">
+   <div class="row pt-2">
+      <% agents.forEach(agent => { %>
+         <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card ">
+               <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                     <div class="col-auto">
+                        <img style="width: 70px; border-radius: 50%; border: 1px solid lightgray;" src="./images/StandingCount.png" alt="">
+                     </div>
+                     <div class="col mr-2 pl-4 ">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                          <h6> <%= agent.name %> </h6>
+                        </div>
+                        <div class="text-xs pt-2 font-weight-bold text-success text-uppercase mb-1">
+                                 Commission: <%= agent.commision %>%
+                                 </div>
+                        <div class="text-xs pt-2 font-weight-bold text-success text-uppercase mb-1">
+                                 zipcode: 4700
+                                 </div>
+                        <div class="text-xl pt-2 font-weight-bold text-success text-uppercase mb-1">
+                           *****
+                        </div>
+                        <div class="text-xs pt-2 font-weight-bold text-success text-uppercase mb-1">
+                           51 total reviews (23 local)
+                        </div>
+                     </div>
+                     <div>
+                             <a href="/seller/invite/<%= agent._id %>/2" class="btn btn-primary btn-sm">Invite</a><br><br>
+                                 <button type="button" data-toggle="modal" data-target="#exampleModalprofile" class="btn btn-primary btn-sm">View Profile</button>
+                    </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <% }) %>
+   </div>
+</div>
+
+
+
+
+
+
+
+
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- End of Main Content -->
+<!-- Popup  -->
+<div class="modal fade" id="exampleModalprofile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                 <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                       <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">Profile</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                          </button>
+                                       </div>
+                                       <div class="modal-body">
+                                          <div class="">
+                                             <div class="">
+                                                <div class="row no-gutters align-items-center">
+                                                   <div class="col-auto">
+                                                      <img style="width: 100px; border-radius: 50%; border: 1px solid lightgray;" src="./images/profile2.jpg" alt="">
+                                                   </div>
+                                                   <div class="col mr-2 pl-4 ">
+                                                      <div class="text-xs font-weight-bold  text-uppercase mb-1">
+                                                         <h6>    <span class="text-success">Name :</span>          <span class="pl-3">Zain</span> </h6>
+                                                      </div>
+                                                      <div class="text-xs pt-2 font-weight-bold text-uppercase mb-1">
+                                                         <h6>    <label class="text-success">Rating :</label>
+                                                            <span class="fa fa-star checked "></span> <span class="fa fa-star checked "></span> <span class="fa fa-star checked "></span> <span class="fa fa-star  "></span> <span class="fa fa-star  "></span>
+                                                         </h6>
+                                                      </div>
+                                                      <div class="text-xl pt-2 font-weight-bold text-success text-uppercase mb-1">
+                                                         <h6>    <label for="">Commession Rate :</label>    <span class="pl-3 text-dark">1.2%</span>       </h6>
+                                                      </div>
+                                                      <div class="text-xl pt-2 font-weight-bold text-success text-uppercase mb-1">
+                                                         <h6>    <label for="">Rating :</label>  <br> <span class="pl-5">Saim</span> <span class="fa fa-star checked pl-2"> 4</span>      </h6>
+                                                         <p class="text-dark pl-5">Nice Website we like...... <br><small class="">Published One week ago</small>  </p>
+                                                         <span class="pl-5">Jack</span>  <span class="fa fa-star checked pl-2"> 3</span>      </h6>
+                                                         <p class="text-dark pl-5">Good Work...... <br><small>Published two days ago</small>  </p>
+                                                      </div>
+                                                      <div class="text-xs pt-2 font-weight-bold text-success text-uppercase mb-1">
+                                                         <label for="">
+                                                            Reviews :
+                                                            <p class="text-dark pl-5"> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quam, eligendi omnis officiis itaque.</p>
+                                                         </label>
+                                                      </div>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <style>
+                                          .checked {
+                                          color: orange;
+                                          }
+                                       </style>
+                                       <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                          <button type="button" class="btn btn-primary">Invite</button>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+
+    <style>
+                    .button1 {
+  background-color: white;
+  color: black;
+  border: 2px solid rgb(0, 81, 255); /* Green */
+}
+.button1:hover {
+  background-color: rgb(0, 81, 255);
+  color: white;
+}
+                    </style>
+
+                   <!-- <button class="button1"> <span class="pntr">Hover over me!</span> -->
+    <div class="container-fluid">
+   <div class="row">
+      <div class="col-10 col-sm-10 col-md-10 col-xl-10 col-xl-10"></div>
+      <div class="col-2 col-sm-2 col-md-2 col-xl-2 col-xl-2 text-right">
+         <button type="button" class="btn  m-3 btn-lg button1">
+         Next >>
+         </button>
+      </div>
+   </div>
+</div>
+    </div>
+
+<%- include('../partials/seller/footer') %>
+</div>
+<%- include('../partials/seller/scripts') %>
+<script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&libraries=&v=weekly&channel=2"
+      async>
+
+    </script>
+
+    <script>
+            // Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  const uluru = { lat: -25.344, lng: 131.036 };
+  // The map, centered at Uluru
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 4,
+    center: uluru,
+  });
+  // The marker, positioned at Uluru
+  const marker = new google.maps.Marker({
+    position: uluru,
+    map: map,
+  });
+}
+    </script>
+
+
+
